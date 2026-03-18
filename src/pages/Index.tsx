@@ -235,7 +235,7 @@ const slides = [
         </div>
         <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(80px, 16vw, 140px)', color: '#C0392B', letterSpacing: '-0.02em', lineHeight: 0.85, textShadow: '0 0 40px rgba(192,57,43,0.2)' }}>26</div>
         <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 13, color: 'rgba(80,55,20,0.55)', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 36 }}>Что означает цифра?</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, maxWidth: 840, width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, maxWidth: 840, width: '100%', marginBottom: 28 }}>
           {[
             { num: '01', text: 'Номер партии или вагона в железнодорожной логистике' },
             { num: '02', text: 'Порядковый номер выставки в серии' },
@@ -247,6 +247,16 @@ const slides = [
               <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 15, color: 'rgba(50,32,8,0.75)', lineHeight: 1.7 }}>{item.text}</div>
             </div>
           ))}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'stretch', maxWidth: 840, width: '100%', border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.05)' }}>
+          <div style={{ background: '#C0392B', padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 64, flexShrink: 0 }}>
+            <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 22, color: '#fff', lineHeight: 1 }}>01</div>
+          </div>
+          <div style={{ padding: '14px 20px', textAlign: 'left', flex: 1, display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(80,55,20,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>ЭТАП 1</div>
+            <div style={{ width: 1, height: 20, background: 'rgba(100,72,28,0.25)' }} />
+            <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 14, color: '#2a1a06', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Вирусное видео</div>
+          </div>
         </div>
       </div>
     ),
@@ -300,32 +310,7 @@ const slides = [
           «Показ 26» — это не просто <em>«выставка»</em> в необычном месте. Это тотальная инсталляция, где контекст (цех), оформление (коробки) и содержание (искусство) сливаются в единое высказывание.
         </div>
 
-        {/* Блок 1 этап */}
-        <div style={{ marginTop: 28, width: '100%', maxWidth: 780 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14, justifyContent: 'center' }}>
-            <div style={{ height: 1, flex: 1, background: 'rgba(100,72,28,0.3)' }} />
-            <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(80,55,20,0.55)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>ПЛАН ПРОДВИЖЕНИЯ</div>
-            <div style={{ height: 1, flex: 1, background: 'rgba(100,72,28,0.3)' }} />
-          </div>
-          <div style={{ display: 'flex', alignItems: 'stretch', gap: 0, border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.05)' }}>
-            <div style={{ background: '#C0392B', padding: '18px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 72, flexShrink: 0 }}>
-              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 28, color: '#fff', lineHeight: 1 }}>01</div>
-            </div>
-            <div style={{ padding: '16px 24px', textAlign: 'left', flex: 1 }}>
-              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 15, color: '#2a1a06', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>
-                Вирусное видео
-              </div>
-              <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 15, color: 'rgba(50,32,8,0.7)', lineHeight: 1.75 }}>
-                Короткий провокационный ролик — загадочная «доставка ящиков» без объяснений. Нагнетание интриги в соцсетях до объявления события.
-              </div>
-            </div>
-            <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-              <Stamp text="ЭТАП 1" color="#C0392B" rotate={2} size={10} />
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 28 }}>
+        <div style={{ marginTop: 40, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 28 }}>
           <Stamp text="ПОКАЗ" color="#C0392B" rotate={-2} size={14} />
           <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 64, color: '#C0392B', lineHeight: 1, textShadow: '0 0 30px rgba(192,57,43,0.2)' }}>26</div>
           <Stamp text="BRUCE HERMAN" color="#8a6020" rotate={1} size={12} />
