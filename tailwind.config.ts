@@ -19,7 +19,24 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				oswald: ['Oswald', 'sans-serif'],
+				cormorant: ['Cormorant Garamond', 'serif'],
+				mono: ['Share Tech Mono', 'monospace'],
+			},
 			colors: {
+				wood: {
+					light: '#C8A96E',
+					mid: '#A07840',
+					dark: '#6B4E2A',
+					grain: '#8B6535',
+				},
+				rust: '#C0392B',
+				steel: '#8E9BA8',
+				coal: '#1A1612',
+				ash: '#2D2820',
+				chalk: '#E8DDD0',
+			},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -89,7 +106,24 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.8s ease-out forwards',
+				'slide-up': 'slide-up 0.9s ease-out forwards',
+				'stamp': 'stamp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+			},
+			keyframes: {
+				'fade-in': {
+					from: { opacity: '0' },
+					to: { opacity: '1' },
+				},
+				'slide-up': {
+					from: { opacity: '0', transform: 'translateY(40px)' },
+					to: { opacity: '1', transform: 'translateY(0)' },
+				},
+				'stamp': {
+					from: { opacity: '0', transform: 'scale(1.4) rotate(-3deg)' },
+					to: { opacity: '1', transform: 'scale(1) rotate(-2deg)' },
+				},
 			}
 		}
 	},
