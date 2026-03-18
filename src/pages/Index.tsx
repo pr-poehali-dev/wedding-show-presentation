@@ -217,6 +217,16 @@ const slides = [
           </div>
           <Code text="АРТИКУЛ: PK26-JWL-001" />
           <div style={{ marginTop: 20 }}><Stamp text="ПОКАЗ 26" color="#C0392B" rotate={-1} /></div>
+          <div style={{ marginTop: 24, display: 'flex', alignItems: 'stretch', border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.05)' }}>
+            <div style={{ background: '#C0392B', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 52, flexShrink: 0 }}>
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 18, color: '#fff', lineHeight: 1 }}>01</div>
+            </div>
+            <div style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: 'rgba(80,55,20,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>ЭТАП 1</div>
+              <div style={{ width: 1, height: 16, background: 'rgba(100,72,28,0.25)' }} />
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 13, color: '#2a1a06', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Вирусное видео</div>
+            </div>
+          </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, padding: 32, alignContent: 'center' }}>
           <img src={IMAGES.ring1} alt="" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', boxShadow: '0 0 0 2px rgba(160,120,60,0.4), 8px 8px 24px rgba(0,0,0,0.7)' }} />
