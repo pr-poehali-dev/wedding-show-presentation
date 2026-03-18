@@ -9,11 +9,11 @@ const IMAGES = {
 };
 
 const T = {
-  dark: '#0d0a06',
-  mid: '#111008',
-  muted: 'rgba(10,8,4,0.7)',
-  accent: '#C0392B',
-  gold: '#6b4a08',
+  dark: '#0a0806',
+  mid: '#0a0806',
+  muted: 'rgba(10,8,4,0.75)',
+  accent: '#0a0806',
+  gold: '#0a0806',
 };
 
 const WoodBg = () => (
@@ -140,7 +140,7 @@ const slides = [
             <ArrowUp />
           </div>
           <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(64px, 13vw, 120px)', color: T.dark, letterSpacing: '-0.02em', lineHeight: 0.88, textShadow: '2px 2px 0 rgba(0,0,0,0.12)' }}>ПОКАЗ</div>
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(100px, 20vw, 180px)', color: T.accent, letterSpacing: '-0.04em', lineHeight: 0.85, textShadow: '3px 3px 0 rgba(0,0,0,0.18)' }}>26</div>
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(100px, 20vw, 180px)', color: T.dark, letterSpacing: '-0.04em', lineHeight: 0.85, textShadow: '3px 3px 0 rgba(0,0,0,0.18)' }}>26</div>
           <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', gap: 20 }}>
             <Stamp text="OPEN THIS SIDE" color={T.accent} rotate={-1} />
             <Stamp text="THIS WAY UP ↑" color={T.gold} rotate={1} />
@@ -169,7 +169,7 @@ const slides = [
             <Stamp text="МЕСТО" color={T.gold} rotate={2} size={11} />
           </div>
           <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(22px, 3.2vw, 38px)', color: T.dark, letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 18 }}>
-            Старинный<br />цех <span style={{ color: T.accent }}>железной</span><br />дороги
+            Старинный<br />цех железной<br />дороги
           </div>
           <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.7vw, 16px)', color: T.mid, lineHeight: 1.85, marginBottom: 14 }}>
             Пространство само по себе — первый и главный экспонат. Грубая кирпичная кладка, высокие потолки с балками и остатки индустриальной инфраструктуры создают атмосферу мощи, истории.
@@ -178,7 +178,7 @@ const slides = [
             Это место-память, где когда-то создавали и ремонтировали стальных гигантов, связывающих страны. Теперь оно становится местом встречи инженерии и искусства.
           </div>
           <Divider />
-          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 15px)', color: T.gold, lineHeight: 1.85, borderLeft: '2px solid rgba(192,57,43,0.45)', paddingLeft: 14 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 15px)', color: T.mid, lineHeight: 1.85, borderLeft: '2px solid rgba(10,8,4,0.35)', paddingLeft: 14 }}>
             Новый сезон здесь ощущается не как смена времени, а как вскрытие слоя — переход от скрытого к явленному, от запечатанного к пережитому.
           </div>
         </div>
@@ -196,7 +196,7 @@ const slides = [
           <Stamp text="FRAGILE" color={T.accent} rotate={-1} size={12} />
         </div>
         <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(20px, 3vw, 36px)', color: T.dark, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 24, textAlign: 'center' }}>
-          Метафора <span style={{ color: T.accent }}>«Распаковки»</span>
+          Метафора «Распаковки»
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, alignItems: 'start' }}>
           <div>
@@ -214,7 +214,7 @@ const slides = [
             <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(13px, 1.6vw, 16px)', color: T.mid, lineHeight: 1.8 }}>
               Витринами служат коробки и манекены: платья, украшения, костюмы — будто только что извлечены для осмотра.
             </div>
-            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(12px, 1.5vw, 15px)', color: T.gold, lineHeight: 1.8, borderLeft: '2px solid rgba(192,57,43,0.4)', paddingLeft: 12 }}>
+            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(12px, 1.5vw, 15px)', color: T.mid, lineHeight: 1.8, borderLeft: '2px solid rgba(10,8,4,0.35)', paddingLeft: 12 }}>
               Распаковка становится жестом познания — мы распаковываем не только форму, но и смысл, не только объект, но и неизвестное, скрытое внутри него.
             </div>
           </div>
@@ -234,23 +234,23 @@ const slides = [
             <Stamp text="ЦЕННЫЙ ГРУЗ" color={T.gold} rotate={1} size={10} />
           </div>
           <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(22px, 3.5vw, 40px)', color: T.dark, textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 18 }}>
-            Ювелирные<br /><span style={{ color: T.accent }}>украшения</span>
+            Ювелирные<br />украшения
           </div>
           <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.7vw, 16px)', color: T.mid, lineHeight: 1.85, marginBottom: 18 }}>
             Кольцо «ПОКАЗ 26» — авторское украшение из серебра с эмалью. Брутальная геометрия, выгравированный код. Предмет, который носит историю на пальце.
           </div>
-          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 15px)', color: T.gold, lineHeight: 1.8, marginBottom: 18, borderLeft: '2px solid rgba(192,57,43,0.4)', paddingLeft: 12 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 15px)', color: T.mid, lineHeight: 1.8, marginBottom: 18, borderLeft: '2px solid rgba(10,8,4,0.35)', paddingLeft: 12 }}>
             Каждое открытие — это контакт с новым, ещё не названным, с тем, что существует на границе ожидания и неожиданности.
           </div>
           <Code text="АРТИКУЛ: PK26-JWL-001" />
           <div style={{ marginTop: 16 }}><Stamp text="ПОКАЗ 26" color={T.accent} rotate={-1} /></div>
-          <div style={{ marginTop: 20, display: 'flex', alignItems: 'stretch', border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.05)' }}>
-            <div style={{ background: T.accent, padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 52, flexShrink: 0 }}>
-              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 18, color: '#fff', lineHeight: 1 }}>01</div>
+          <div style={{ marginTop: 20, display: 'flex', alignItems: 'stretch', border: '1px solid rgba(10,8,4,0.3)', background: 'rgba(10,8,4,0.06)' }}>
+            <div style={{ background: 'rgba(10,8,4,0.85)', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 52, flexShrink: 0 }}>
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 18, color: '#c8a96e', lineHeight: 1 }}>01</div>
             </div>
             <div style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: 'rgba(60,38,10,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>ЭТАП 1</div>
-              <div style={{ width: 1, height: 16, background: 'rgba(100,72,28,0.25)' }} />
+              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: T.mid, letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>ЭТАП 1</div>
+              <div style={{ width: 1, height: 16, background: 'rgba(10,8,4,0.25)' }} />
               <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 13, color: T.dark, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Вирусное видео</div>
             </div>
           </div>
@@ -272,8 +272,8 @@ const slides = [
           <Code text="ГРУЗ №004 / КОД ОТПРАВЛЕНИЯ" />
           <Stamp text="РАСШИФРОВАТЬ" color={T.accent} rotate={-1} size={11} />
         </div>
-        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(70px, 14vw, 130px)', color: T.accent, letterSpacing: '-0.02em', lineHeight: 0.85, textShadow: '0 0 30px rgba(192,57,43,0.15)' }}>26</div>
-        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 13, color: T.gold, letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 24 }}>Название «Показ 26»</div>
+        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(70px, 14vw, 130px)', color: T.dark, letterSpacing: '-0.02em', lineHeight: 0.85 }}>26</div>
+        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 13, color: T.mid, letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 24 }}>Название «Показ 26»</div>
         <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(13px, 1.6vw, 15px)', color: T.mid, lineHeight: 1.8, maxWidth: 700, marginBottom: 24 }}>
           Цифра «26» добавляет интриги и может трактоваться по-разному. В этом коде также зашито ощущение начала — как маркировка нового сезона, новой отправной точки, где каждое произведение впервые выходит в пространство взгляда.
         </div>
@@ -285,7 +285,7 @@ const slides = [
             { num: '04', text: 'Загадочный код, который зритель наполняет своим смыслом' },
           ].map(item => (
             <div key={item.num} style={{ padding: '18px 16px', border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.06)', textAlign: 'left' }}>
-              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(192,57,43,0.8)', letterSpacing: '0.2em', marginBottom: 8 }}>[{item.num}]</div>
+              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(10,8,4,0.55)', letterSpacing: '0.2em', marginBottom: 8 }}>[{item.num}]</div>
               <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 14, color: T.mid, lineHeight: 1.7 }}>{item.text}</div>
             </div>
           ))}
@@ -301,12 +301,12 @@ const slides = [
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', padding: '48px 56px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 40 }}>
           <Code text="ГРУЗ №005 / ЗВУКОВОЕ СОПРОВОЖДЕНИЕ" />
-          <Stamp text="ECHO" color="#5a7a8a" rotate={2} size={12} />
+          <Stamp text="ECHO" color={T.dark} rotate={2} size={12} />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
           <div>
             <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500, fontSize: 'clamp(22px, 3.5vw, 44px)', color: T.dark, textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 22 }}>
-              Звуковое<br /><span style={{ color: '#5a7a8a' }}>сопровождение</span>
+              Звуковое<br />сопровождение
             </div>
             <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: T.mid, lineHeight: 1.9 }}>
               Звуковое сопровождение может включать отдалённые эхо поездов, скрип дерева, электронные аранжировки — намекая на диалог эпох. Пространство дышит и говорит своим языком.
@@ -319,7 +319,7 @@ const slides = [
               { icon: '◎', label: 'Электроника', sub: 'Диалог прошлого с настоящим' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                <div style={{ width: 52, height: 52, flexShrink: 0, border: '1px solid rgba(90,122,138,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Share Tech Mono, monospace', fontSize: 22, color: 'rgba(90,122,138,0.7)' }}>
+                <div style={{ width: 52, height: 52, flexShrink: 0, border: '1px solid rgba(10,8,4,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Share Tech Mono, monospace', fontSize: 22, color: 'rgba(10,8,4,0.5)' }}>
                   {item.icon}
                 </div>
                 <div>
@@ -342,7 +342,7 @@ const slides = [
         <div style={{ display: 'flex', justifyContent: 'center', gap: 40, marginBottom: 24 }}>
           <ArrowUp small /><ArrowUp small /><ArrowUp small />
         </div>
-        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(13px, 1.6vw, 16px)', color: T.gold, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Итог</div>
+        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(13px, 1.6vw, 16px)', color: T.dark, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Итог</div>
         <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(15px, 2vw, 19px)', color: T.mid, lineHeight: 1.9, maxWidth: 720, marginBottom: 18 }}>
           «Показ 26» — это не просто «выставка» в необычном месте. Это тотальная инсталляция, где контекст (цех), оформление (коробки) и содержание (искусство) сливаются в единое высказывание.
         </div>
@@ -350,15 +350,15 @@ const slides = [
           Высказывание о хрупкости и ценности, который, как хрупкий груз, путешествует через время и пространство, чтобы быть бережно распакованным перед зрителем здесь и сейчас, среди свидетельств индустриальной мощи прошлого.
         </div>
         <Divider />
-        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(14px, 1.8vw, 17px)', color: T.gold, lineHeight: 1.9, maxWidth: 640 }}>
+        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(14px, 1.8vw, 17px)', color: T.mid, lineHeight: 1.9, maxWidth: 640 }}>
           И, возможно, главный жест этого показа — не демонстрация, а открытие: момент, когда неизвестное становится видимым, а новое — переживаемым.
         </div>
         <div style={{ marginTop: 32, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 28 }}>
-          <Stamp text="ПОКАЗ" color={T.accent} rotate={-2} size={14} />
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 60, color: T.accent, lineHeight: 1 }}>26</div>
-          <Stamp text="BRUCE HERMAN" color={T.gold} rotate={1} size={12} />
+          <Stamp text="ПОКАЗ" color={T.dark} rotate={-2} size={14} />
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 60, color: T.dark, lineHeight: 1 }}>26</div>
+          <Stamp text="BRUCE HERMAN" color={T.dark} rotate={1} size={12} />
         </div>
-        <div style={{ marginTop: 16, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(60,38,10,0.4)', letterSpacing: '0.2em' }}>
+        <div style={{ marginTop: 16, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(10,8,4,0.45)', letterSpacing: '0.2em' }}>
           B/N4-6BABX58 · W7 119.485 · OPEN THIS SIDE · FRAGILE
         </div>
       </div>
