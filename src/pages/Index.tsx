@@ -245,7 +245,7 @@ const slides = [
         </div>
         <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(80px, 16vw, 140px)', color: '#C0392B', letterSpacing: '-0.02em', lineHeight: 0.85, textShadow: '0 0 40px rgba(192,57,43,0.2)' }}>26</div>
         <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 13, color: 'rgba(80,55,20,0.55)', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 36 }}>Что означает цифра?</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, maxWidth: 840, width: '100%', marginBottom: 28 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, maxWidth: 840, width: '100%' }}>
           {[
             { num: '01', text: 'Номер партии или вагона в железнодорожной логистике' },
             { num: '02', text: 'Порядковый номер выставки в серии' },
@@ -257,16 +257,6 @@ const slides = [
               <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 15, color: 'rgba(50,32,8,0.75)', lineHeight: 1.7 }}>{item.text}</div>
             </div>
           ))}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'stretch', maxWidth: 840, width: '100%', border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.05)' }}>
-          <div style={{ background: '#C0392B', padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 64, flexShrink: 0 }}>
-            <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 22, color: '#fff', lineHeight: 1 }}>01</div>
-          </div>
-          <div style={{ padding: '14px 20px', textAlign: 'left', flex: 1, display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(80,55,20,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>ЭТАП 1</div>
-            <div style={{ width: 1, height: 20, background: 'rgba(100,72,28,0.25)' }} />
-            <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 14, color: '#2a1a06', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Вирусное видео</div>
-          </div>
         </div>
       </div>
     ),
