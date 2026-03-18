@@ -10,52 +10,70 @@ const IMAGES = {
 
 const WoodBg = () => (
   <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
+    {/* Основной фон — светлое некрашеное дерево ящика */}
     <div style={{
       position: 'absolute', inset: 0,
-      background: 'linear-gradient(135deg, #3d2810 0%, #5c3d1e 20%, #4a2f14 40%, #6b4822 60%, #3a2510 80%, #4f3318 100%)',
+      background: 'linear-gradient(160deg, #e8d9be 0%, #d4c49e 18%, #dccfb0 35%, #c9b888 52%, #d8caa8 68%, #cfc09a 85%, #d4c49e 100%)',
     }} />
-    <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15 }}>
-      <filter id="grain">
-        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#grain)" />
-    </svg>
-    {[...Array(16)].map((_, i) => (
-      <div key={i} style={{
-        position: 'absolute', top: `${i * 6.25}%`, left: 0, right: 0,
-        height: `${1 + (i % 3) * 0.4}px`,
-        background: `rgba(${i % 2 === 0 ? '20,12,5' : '110,70,25'},${0.07 + (i % 4) * 0.03})`,
+    {/* Текстура древесных волокон — горизонтальные полосы */}
+    {[...Array(22)].map((_, i) => (
+      <div key={`h${i}`} style={{
+        position: 'absolute', top: `${i * 4.6}%`, left: 0, right: 0,
+        height: `${0.8 + (i % 4) * 0.5}px`,
+        background: `rgba(${i % 3 === 0 ? '100,75,30' : i % 3 === 1 ? '160,130,70' : '80,55,20'},${0.06 + (i % 5) * 0.025})`,
       }} />
     ))}
-    {[...Array(10)].map((_, i) => (
-      <div key={i} style={{
-        position: 'absolute', left: `${i * 10}%`, top: 0, bottom: 0,
-        width: `${0.5 + (i % 3) * 0.3}px`,
-        background: `rgba(20,10,4,${0.05 + (i % 3) * 0.03})`,
+    {/* Вертикальные стыки досок */}
+    {[20, 47, 73].map((pos, i) => (
+      <div key={`v${i}`} style={{
+        position: 'absolute', left: `${pos}%`, top: 0, bottom: 0,
+        width: 3,
+        background: 'linear-gradient(to right, rgba(80,55,20,0.18), rgba(60,40,12,0.28), rgba(80,55,20,0.18))',
       }} />
     ))}
+    {/* Тёмные узлы дерева */}
+    {[[15, 30], [62, 55], [38, 80], [82, 20]].map(([l, t], i) => (
+      <div key={`k${i}`} style={{
+        position: 'absolute', left: `${l}%`, top: `${t}%`,
+        width: 38 + i * 8, height: 22 + i * 4,
+        borderRadius: '50%',
+        background: 'radial-gradient(ellipse, rgba(90,60,20,0.18) 30%, transparent 70%)',
+        transform: `rotate(${-15 + i * 12}deg)`,
+      }} />
+    ))}
+    {/* Лёгкое затемнение по краям */}
     <div style={{
       position: 'absolute', inset: 0,
-      background: 'radial-gradient(ellipse at center, transparent 25%, rgba(12,6,2,0.65) 100%)',
+      background: 'radial-gradient(ellipse at center, transparent 40%, rgba(60,40,15,0.22) 100%)',
     }} />
+    {/* Угловые металлические скобы */}
     {[0, 1, 2, 3].map(i => (
-      <div key={i} style={{
+      <div key={`screw${i}`} style={{
         position: 'absolute',
-        left: i % 2 === 0 ? 0 : 'auto', right: i % 2 === 1 ? 0 : 'auto',
-        top: i < 2 ? 0 : 'auto', bottom: i >= 2 ? 0 : 'auto',
-        width: 20, height: 20, borderRadius: '50%',
-        background: 'radial-gradient(circle, #c8a060 0%, #5a3010 100%)',
-        boxShadow: '0 0 6px rgba(0,0,0,0.9)',
-        margin: 12, zIndex: 2,
+        left: i % 2 === 0 ? 14 : 'auto', right: i % 2 === 1 ? 14 : 'auto',
+        top: i < 2 ? 14 : 'auto', bottom: i >= 2 ? 14 : 'auto',
+        width: 16, height: 16, borderRadius: '50%',
+        background: 'radial-gradient(circle at 35% 35%, #d4c8a8, #8a7040)',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,240,0.3)',
+        zIndex: 2,
       }} />
     ))}
+    {/* Рамка-окантовка ящика */}
     <div style={{
       position: 'absolute', inset: 0,
-      border: '3px solid rgba(140,100,45,0.35)',
-      boxShadow: 'inset 0 0 0 1px rgba(80,50,15,0.5)',
+      border: '4px solid rgba(100,72,28,0.45)',
+      boxShadow: 'inset 0 0 0 2px rgba(160,130,70,0.2), inset 0 0 18px rgba(80,55,20,0.12)',
       pointerEvents: 'none', zIndex: 2,
     }} />
+    {/* Горизонтальные рейки поперёк ящика */}
+    {[18, 50, 82].map((pos, i) => (
+      <div key={`rail${i}`} style={{
+        position: 'absolute', top: `${pos}%`, left: 0, right: 0,
+        height: 6,
+        background: 'linear-gradient(to bottom, rgba(100,72,28,0.22), rgba(80,55,20,0.32), rgba(100,72,28,0.22))',
+        zIndex: 1,
+      }} />
+    ))}
   </div>
 );
 
@@ -74,20 +92,20 @@ const Stamp = ({ text, color = '#C0392B', rotate = -2, size = 13 }: { text: stri
 const Code = ({ text }: { text: string }) => (
   <div style={{
     fontFamily: 'Share Tech Mono, monospace', fontSize: 10,
-    color: 'rgba(200,165,100,0.5)', letterSpacing: '0.15em',
+    color: 'rgba(80,55,20,0.6)', letterSpacing: '0.15em',
   }}>{text}</div>
 );
 
 const ArrowUp = ({ small = false }: { small?: boolean }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.6 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.55 }}>
     {[0, 1].map(i => (
       <div key={i}>
-        <div style={{ width: 2, height: small ? 18 : 26, background: 'rgba(200,165,100,0.7)', margin: '0 auto' }} />
+        <div style={{ width: 2, height: small ? 18 : 26, background: 'rgba(80,55,20,0.7)', margin: '0 auto' }} />
         <div style={{
           width: 0, height: 0, margin: '-1px auto 0',
           borderLeft: `${small ? 5 : 7}px solid transparent`,
           borderRight: `${small ? 5 : 7}px solid transparent`,
-          borderBottom: `${small ? 9 : 13}px solid rgba(200,165,100,0.7)`,
+          borderBottom: `${small ? 9 : 13}px solid rgba(80,55,20,0.7)`,
         }} />
       </div>
     ))}
@@ -99,8 +117,7 @@ const slides = [
     id: 'title',
     render: () => (
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%', textAlign: 'center', position: 'relative' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMAGES.workshop})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.2, filter: 'sepia(60%) contrast(1.1)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(30,18,8,0.2) 0%, rgba(30,18,8,0.85) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMAGES.workshop})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.12, filter: 'sepia(40%) contrast(1.1)' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 60, marginBottom: 28 }}>
             <ArrowUp />
@@ -111,13 +128,13 @@ const slides = [
             </div>
             <ArrowUp />
           </div>
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(64px, 13vw, 120px)', color: '#E8DDD0', letterSpacing: '-0.02em', lineHeight: 0.88, textShadow: '4px 4px 0 rgba(0,0,0,0.5)' }}>ПОКАЗ</div>
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(100px, 20vw, 180px)', color: '#C0392B', letterSpacing: '-0.04em', lineHeight: 0.85, textShadow: '4px 4px 0 rgba(0,0,0,0.6), 0 0 80px rgba(192,57,43,0.35)' }}>26</div>
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(64px, 13vw, 120px)', color: '#3a2508', letterSpacing: '-0.02em', lineHeight: 0.88, textShadow: '2px 2px 0 rgba(0,0,0,0.15)' }}>ПОКАЗ</div>
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(100px, 20vw, 180px)', color: '#C0392B', letterSpacing: '-0.04em', lineHeight: 0.85, textShadow: '3px 3px 0 rgba(0,0,0,0.2), 0 0 60px rgba(192,57,43,0.2)' }}>26</div>
           <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', gap: 20 }}>
             <Stamp text="OPEN THIS SIDE" color="#C0392B" rotate={-1} />
-            <Stamp text="THIS WAY UP ↑" color="#C8A060" rotate={1} />
+            <Stamp text="THIS WAY UP ↑" color="#8a6020" rotate={1} />
           </div>
-          <div style={{ marginTop: 32, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(15px, 2.2vw, 20px)', color: 'rgba(232,221,208,0.75)', letterSpacing: '0.06em' }}>
+          <div style={{ marginTop: 32, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(15px, 2.2vw, 20px)', color: 'rgba(60,40,12,0.65)', letterSpacing: '0.06em' }}>
             Старинный цех железной дороги.<br />Место встречи инженерии и искусства.
           </div>
         </div>
@@ -136,15 +153,15 @@ const slides = [
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '48px 40px 48px 32px' }}>
           <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Code text="ГРУЗ №001" />
-            <Stamp text="МЕСТО" color="#C8A060" rotate={2} size={11} />
+            <Stamp text="МЕСТО" color="#8a6020" rotate={2} size={11} />
           </div>
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(26px, 4vw, 46px)', color: '#E8DDD0', letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 24 }}>
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(26px, 4vw, 46px)', color: '#2a1a06', letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 24 }}>
             Старинный<br />цех <span style={{ color: '#C0392B' }}>железной</span><br />дороги
           </div>
-          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(232,221,208,0.75)', lineHeight: 1.85, marginBottom: 16 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(50,32,8,0.75)', lineHeight: 1.85, marginBottom: 16 }}>
             Пространство само по себе — первый и главный экспонат. Грубая кирпичная кладка, высокие потолки с балками и остатки индустриальной инфраструктуры создают атмосферу мощи, истории.
           </div>
-          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', color: 'rgba(200,165,100,0.65)', lineHeight: 1.8, borderLeft: '2px solid rgba(192,57,43,0.5)', paddingLeft: 16 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', color: 'rgba(100,70,20,0.75)', lineHeight: 1.8, borderLeft: '2px solid rgba(192,57,43,0.5)', paddingLeft: 16 }}>
             Это место-память, где когда-то создавали и ремонтировали стальных гигантов, связывающих страны. Теперь оно становится местом встречи инженерии и искусства.
           </div>
         </div>
@@ -159,23 +176,23 @@ const slides = [
           <Code text="ГРУЗ №002 / КОНЦЕПЦИЯ" />
           <Stamp text="FRAGILE" color="#C0392B" rotate={-1} size={12} />
         </div>
-        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(22px, 3.5vw, 40px)', color: '#E8DDD0', letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 32, textAlign: 'center' }}>
-          Метафора <span style={{ color: '#C8A060' }}>«Распаковки»</span>
+        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(22px, 3.5vw, 40px)', color: '#2a1a06', letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 32, textAlign: 'center' }}>
+          Метафора <span style={{ color: '#C0392B' }}>«Распаковки»</span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, alignItems: 'start' }}>
           <div>
-            <img src={IMAGES.mannequins} alt="" style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', filter: 'sepia(20%) contrast(1.05)', boxShadow: '0 0 0 2px rgba(160,120,60,0.4), 6px 6px 20px rgba(0,0,0,0.7)', marginBottom: 10 }} />
+            <img src={IMAGES.mannequins} alt="" style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', filter: 'sepia(20%) contrast(1.05)', boxShadow: '0 0 0 2px rgba(100,72,28,0.5), 6px 6px 20px rgba(0,0,0,0.3)', marginBottom: 10 }} />
             <Code text="BOÎTE À CORPS" />
           </div>
           <div>
-            <img src={IMAGES.sculpture} alt="" style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', filter: 'sepia(10%) contrast(1.05)', boxShadow: '0 0 0 2px rgba(160,120,60,0.4), 6px 6px 20px rgba(0,0,0,0.7)', marginBottom: 10 }} />
+            <img src={IMAGES.sculpture} alt="" style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', filter: 'sepia(10%) contrast(1.05)', boxShadow: '0 0 0 2px rgba(100,72,28,0.5), 6px 6px 20px rgba(0,0,0,0.3)', marginBottom: 10 }} />
             <Code text="THIS WAY UP" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
-            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(232,221,208,0.8)', lineHeight: 1.85 }}>
+            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(50,32,8,0.8)', lineHeight: 1.85 }}>
               Гости буквально <em>«распаковывают»</em> искусство. Каждый арт-объект воспринимается как уникальный, хрупкий и бесценный экспонат, доставленный с особой бережностью.
             </div>
-            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', color: 'rgba(200,165,100,0.65)', lineHeight: 1.8, borderLeft: '2px solid rgba(192,57,43,0.4)', paddingLeft: 14 }}>
+            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', color: 'rgba(100,70,20,0.75)', lineHeight: 1.8, borderLeft: '2px solid rgba(192,57,43,0.4)', paddingLeft: 14 }}>
               Витринами служат коробки и манекены: платья, украшения, костюмы — будто только что извлечены для осмотра.
             </div>
           </div>
@@ -192,10 +209,10 @@ const slides = [
             <Code text="ГРУЗ №003 / УКРАШЕНИЯ" />
             <Stamp text="ЦЕННЫЙ ГРУЗ" color="#C8A060" rotate={1} size={10} />
           </div>
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(24px, 3.8vw, 44px)', color: '#E8DDD0', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 24 }}>
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 'clamp(24px, 3.8vw, 44px)', color: '#2a1a06', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 24 }}>
             Ювелирные<br /><span style={{ color: '#C0392B' }}>украшения</span>
           </div>
-          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(232,221,208,0.75)', lineHeight: 1.85, marginBottom: 24 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(50,32,8,0.75)', lineHeight: 1.85, marginBottom: 24 }}>
             Кольцо «ПОКАЗ 26» — авторское украшение из серебра с эмалью. Брутальная геометрия, выгравированный код. Предмет, который носит историю на пальце.
           </div>
           <Code text="АРТИКУЛ: PK26-JWL-001" />
@@ -216,8 +233,8 @@ const slides = [
           <Code text="ГРУЗ №004 / КОД ОТПРАВЛЕНИЯ" />
           <Stamp text="РАСШИФРОВАТЬ" color="#C0392B" rotate={-1} size={11} />
         </div>
-        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(80px, 16vw, 140px)', color: '#C0392B', letterSpacing: '-0.02em', lineHeight: 0.85, textShadow: '0 0 50px rgba(192,57,43,0.3)' }}>26</div>
-        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 13, color: 'rgba(200,165,100,0.55)', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 36 }}>Что означает цифра?</div>
+        <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(80px, 16vw, 140px)', color: '#C0392B', letterSpacing: '-0.02em', lineHeight: 0.85, textShadow: '0 0 40px rgba(192,57,43,0.2)' }}>26</div>
+        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 13, color: 'rgba(80,55,20,0.55)', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 36 }}>Что означает цифра?</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, maxWidth: 840, width: '100%' }}>
           {[
             { num: '01', text: 'Номер партии или вагона в железнодорожной логистике' },
@@ -225,9 +242,9 @@ const slides = [
             { num: '03', text: 'Количество художников, объектов или коробок-инсталляций' },
             { num: '04', text: 'Загадочный код, который зритель наполняет своим смыслом' },
           ].map(item => (
-            <div key={item.num} style={{ padding: '20px 18px', border: '1px solid rgba(160,120,60,0.25)', background: 'rgba(200,165,100,0.04)', textAlign: 'left' }}>
-              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(192,57,43,0.65)', letterSpacing: '0.2em', marginBottom: 10 }}>[{item.num}]</div>
-              <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 15, color: 'rgba(232,221,208,0.75)', lineHeight: 1.7 }}>{item.text}</div>
+            <div key={item.num} style={{ padding: '20px 18px', border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.06)', textAlign: 'left' }}>
+              <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(192,57,43,0.7)', letterSpacing: '0.2em', marginBottom: 10 }}>[{item.num}]</div>
+              <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 15, color: 'rgba(50,32,8,0.75)', lineHeight: 1.7 }}>{item.text}</div>
             </div>
           ))}
         </div>
@@ -244,10 +261,10 @@ const slides = [
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
           <div>
-            <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500, fontSize: 'clamp(28px, 4vw, 52px)', color: '#E8DDD0', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 28 }}>
-              Диалог<br /><span style={{ color: '#8E9BA8' }}>эпох</span>
+            <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500, fontSize: 'clamp(22px, 3.5vw, 44px)', color: '#2a1a06', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 28 }}>
+              Звуковое<br /><span style={{ color: '#5a7a8a' }}>сопровождение</span>
             </div>
-            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(15px, 1.9vw, 18px)', color: 'rgba(232,221,208,0.75)', lineHeight: 1.9 }}>
+            <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(15px, 1.9vw, 18px)', color: 'rgba(50,32,8,0.75)', lineHeight: 1.9 }}>
               Звуковое сопровождение включает отдалённые эхо поездов, скрип дерева, электронные аранжировки — намекая на диалог эпох. Пространство дышит и говорит своим языком.
             </div>
           </div>
@@ -262,8 +279,8 @@ const slides = [
                   {item.icon}
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 11, color: 'rgba(232,221,208,0.55)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{item.label}</div>
-                  <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 14, color: 'rgba(200,165,100,0.5)', marginTop: 2 }}>{item.sub}</div>
+                  <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 11, color: 'rgba(50,32,8,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{item.label}</div>
+                  <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 14, color: 'rgba(90,60,20,0.6)', marginTop: 2 }}>{item.sub}</div>
                 </div>
               </div>
             ))}
@@ -275,22 +292,45 @@ const slides = [
   {
     id: 'finale',
     render: () => (
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%', padding: '48px 56px', textAlign: 'center' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 40, marginBottom: 40 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%', padding: '32px 56px', textAlign: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 40, marginBottom: 28 }}>
           <ArrowUp small /><ArrowUp small /><ArrowUp small />
         </div>
-        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(17px, 2.5vw, 24px)', color: 'rgba(232,221,208,0.85)', lineHeight: 1.95, maxWidth: 680 }}>
+        <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(15px, 2.2vw, 21px)', color: 'rgba(50,32,8,0.85)', lineHeight: 1.9, maxWidth: 680 }}>
           «Показ 26» — это не просто <em>«выставка»</em> в необычном месте. Это тотальная инсталляция, где контекст (цех), оформление (коробки) и содержание (искусство) сливаются в единое высказывание.
         </div>
-        <div style={{ marginTop: 24, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(14px, 1.8vw, 18px)', color: 'rgba(200,165,100,0.6)', lineHeight: 1.85, maxWidth: 580 }}>
-          Высказывание о хрупкости и ценности, который, как хрупкий груз, путешествует через время и пространство, чтобы быть бережно распакованным перед зрителем.
+
+        {/* Блок 1 этап */}
+        <div style={{ marginTop: 28, width: '100%', maxWidth: 780 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14, justifyContent: 'center' }}>
+            <div style={{ height: 1, flex: 1, background: 'rgba(100,72,28,0.3)' }} />
+            <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(80,55,20,0.55)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>ПЛАН ПРОДВИЖЕНИЯ</div>
+            <div style={{ height: 1, flex: 1, background: 'rgba(100,72,28,0.3)' }} />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'stretch', gap: 0, border: '1px solid rgba(100,72,28,0.3)', background: 'rgba(100,72,28,0.05)' }}>
+            <div style={{ background: '#C0392B', padding: '18px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 72, flexShrink: 0 }}>
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 28, color: '#fff', lineHeight: 1 }}>01</div>
+            </div>
+            <div style={{ padding: '16px 24px', textAlign: 'left', flex: 1 }}>
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: 15, color: '#2a1a06', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>
+                Вирусное видео
+              </div>
+              <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 15, color: 'rgba(50,32,8,0.7)', lineHeight: 1.75 }}>
+                Короткий провокационный ролик — загадочная «доставка ящиков» без объяснений. Нагнетание интриги в соцсетях до объявления события.
+              </div>
+            </div>
+            <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+              <Stamp text="ЭТАП 1" color="#C0392B" rotate={2} size={10} />
+            </div>
+          </div>
         </div>
-        <div style={{ marginTop: 52, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 28 }}>
+
+        <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 28 }}>
           <Stamp text="ПОКАЗ" color="#C0392B" rotate={-2} size={14} />
-          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 72, color: '#C0392B', lineHeight: 1, textShadow: '0 0 40px rgba(192,57,43,0.4)' }}>26</div>
-          <Stamp text="BRUCE HERMAN" color="#C8A060" rotate={1} size={12} />
+          <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 64, color: '#C0392B', lineHeight: 1, textShadow: '0 0 30px rgba(192,57,43,0.2)' }}>26</div>
+          <Stamp text="BRUCE HERMAN" color="#8a6020" rotate={1} size={12} />
         </div>
-        <div style={{ marginTop: 36, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(200,165,100,0.3)', letterSpacing: '0.2em' }}>
+        <div style={{ marginTop: 20, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(80,55,20,0.35)', letterSpacing: '0.2em' }}>
           B/N4-6BABX58 · W7 119.485 · OPEN THIS SIDE · FRAGILE
         </div>
       </div>
@@ -338,25 +378,25 @@ export default function Index() {
       {current > 0 && (
         <button onClick={() => goTo(current - 1)} style={{
           position: 'absolute', left: 20, top: '50%', transform: 'translateY(-50%)',
-          zIndex: 10, background: 'rgba(40,24,10,0.75)', border: '1px solid rgba(160,120,60,0.35)',
-          color: 'rgba(232,221,208,0.8)', width: 44, height: 44, cursor: 'pointer',
+          zIndex: 10, background: 'rgba(200,180,140,0.7)', border: '1px solid rgba(100,72,28,0.4)',
+          color: 'rgba(50,32,8,0.85)', width: 44, height: 44, cursor: 'pointer',
           fontSize: 22, display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: 'serif', transition: 'background 0.2s',
         }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(192,57,43,0.45)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(40,24,10,0.75)')}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(192,57,43,0.25)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(200,180,140,0.7)')}
         >‹</button>
       )}
       {current < slides.length - 1 && (
         <button onClick={() => goTo(current + 1)} style={{
           position: 'absolute', right: 20, top: '50%', transform: 'translateY(-50%)',
-          zIndex: 10, background: 'rgba(40,24,10,0.75)', border: '1px solid rgba(160,120,60,0.35)',
-          color: 'rgba(232,221,208,0.8)', width: 44, height: 44, cursor: 'pointer',
+          zIndex: 10, background: 'rgba(200,180,140,0.7)', border: '1px solid rgba(100,72,28,0.4)',
+          color: 'rgba(50,32,8,0.85)', width: 44, height: 44, cursor: 'pointer',
           fontSize: 22, display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: 'serif', transition: 'background 0.2s',
         }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(192,57,43,0.45)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(40,24,10,0.75)')}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(192,57,43,0.25)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(200,180,140,0.7)')}
         >›</button>
       )}
 
@@ -367,17 +407,17 @@ export default function Index() {
         {slides.map((_, i) => (
           <button key={i} onClick={() => goTo(i)} title={SLIDE_NAMES[i]} style={{
             width: i === current ? 28 : 8, height: 8,
-            background: i === current ? '#C0392B' : 'rgba(200,165,100,0.3)',
+            background: i === current ? '#C0392B' : 'rgba(100,72,28,0.3)',
             border: 'none', cursor: 'pointer', padding: 0,
             transition: 'all 0.3s ease',
           }} />
         ))}
       </div>
 
-      <div style={{ position: 'absolute', bottom: 20, right: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(200,165,100,0.4)', letterSpacing: '0.2em' }}>
+      <div style={{ position: 'absolute', bottom: 20, right: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(80,55,20,0.45)', letterSpacing: '0.2em' }}>
         {String(current + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
       </div>
-      <div style={{ position: 'absolute', bottom: 20, left: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: 'rgba(200,165,100,0.3)', letterSpacing: '0.15em' }}>
+      <div style={{ position: 'absolute', bottom: 20, left: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: 'rgba(80,55,20,0.35)', letterSpacing: '0.15em' }}>
         ← → НАВИГАЦИЯ
       </div>
     </div>
