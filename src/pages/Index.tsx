@@ -18,82 +18,25 @@ const T = {
 
 const WoodBg = () => (
   <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
-    {/* Основа фанеры — жёлто-коричневый, чуть тёмнее предыдущего */}
-    <div style={{ position: 'absolute', inset: 0, background: '#b89a62' }} />
-    {/* Слои шпона с разными оттенками — имитация фанеры */}
-    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(175deg, #c8a96e 0%, #a8884e 15%, #beaa72 30%, #9e7e44 45%, #b89458 60%, #a07840 75%, #bc9e64 90%, #a88650 100%)', opacity: 0.9 }} />
-    {/* Длинные тонкие волокна — характерная текстура фанеры */}
-    {[...Array(40)].map((_, i) => (
-      <div key={`f${i}`} style={{
-        position: 'absolute', top: `${i * 2.52}%`, left: 0, right: 0,
-        height: `${0.5 + (i % 6 === 0 ? 1.2 : i % 3 === 0 ? 0.8 : 0.4)}px`,
-        background: `rgba(${i % 4 === 0 ? '50,32,8' : i % 4 === 1 ? '140,100,40' : i % 4 === 2 ? '30,18,4' : '170,130,60'},${0.08 + (i % 7) * 0.018})`,
-      }} />
+    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #3d2810 0%, #5c3d1e 20%, #4a2f14 40%, #6b4822 60%, #3a2510 80%, #4f3318 100%)' }} />
+    <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15 }}>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain)" />
+    </svg>
+    {[...Array(16)].map((_, i) => (
+      <div key={i} style={{ position: 'absolute', top: `${i * 6.25}%`, left: 0, right: 0, height: `${1 + (i % 3) * 0.4}px`, background: `rgba(${i % 2 === 0 ? '20,12,5' : '110,70,25'},${0.07 + (i % 4) * 0.03})` }} />
     ))}
-    {/* Несколько заметных тёмных прожилок */}
-    {[8, 23, 41, 58, 77, 91].map((pos, i) => (
-      <div key={`g${i}`} style={{
-        position: 'absolute', top: `${pos}%`, left: 0, right: 0,
-        height: `${1.5 + (i % 2) * 1}px`,
-        background: `rgba(40,24,6,${0.18 + (i % 3) * 0.07})`,
-      }} />
+    {[...Array(10)].map((_, i) => (
+      <div key={i} style={{ position: 'absolute', left: `${i * 10}%`, top: 0, bottom: 0, width: `${0.5 + (i % 3) * 0.3}px`, background: `rgba(20,10,4,${0.05 + (i % 3) * 0.03})` }} />
     ))}
-    {/* Вертикальные стыки листов фанеры */}
-    {[33, 66].map((pos) => (
-      <div key={`s${pos}`} style={{
-        position: 'absolute', left: `${pos}%`, top: 0, bottom: 0, width: 2,
-        background: 'linear-gradient(to right, rgba(40,24,6,0.25), rgba(25,14,3,0.4), rgba(40,24,6,0.25))',
-      }} />
-    ))}
-    {/* Тёмные сучки */}
-    {[[12, 22], [55, 68], [80, 40], [30, 85]].map(([l, t], i) => (
-      <div key={`k${i}`} style={{
-        position: 'absolute', left: `${l}%`, top: `${t}%`,
-        width: 50 + i * 10, height: 28 + i * 5, borderRadius: '50%',
-        background: 'radial-gradient(ellipse, rgba(35,20,5,0.28) 20%, rgba(60,38,10,0.12) 60%, transparent 80%)',
-        transform: `rotate(${-20 + i * 15}deg)`,
-      }} />
-    ))}
-    {/* Общее затемнение краёв */}
-    <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, transparent 30%, rgba(20,10,2,0.35) 100%)' }} />
-    {/* Общий тёмный оверлей для нужной глубины */}
-    <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,12,3,0.18)' }} />
-    {/* Металлические скобы по углам */}
+    <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, transparent 25%, rgba(12,6,2,0.65) 100%)' }} />
     {[0, 1, 2, 3].map(i => (
-      <div key={`screw${i}`} style={{
-        position: 'absolute', left: i % 2 === 0 ? 12 : 'auto', right: i % 2 === 1 ? 12 : 'auto',
-        top: i < 2 ? 12 : 'auto', bottom: i >= 2 ? 12 : 'auto',
-        width: 18, height: 18, borderRadius: '50%',
-        background: 'radial-gradient(circle at 35% 35%, #c8b880, #6a5020)',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,240,180,0.25)',
-        zIndex: 3,
-      }} />
+      <div key={i} style={{ position: 'absolute', left: i % 2 === 0 ? 0 : 'auto', right: i % 2 === 1 ? 0 : 'auto', top: i < 2 ? 0 : 'auto', bottom: i >= 2 ? 0 : 'auto', width: 20, height: 20, borderRadius: '50%', background: 'radial-gradient(circle, #c8a060 0%, #5a3010 100%)', boxShadow: '0 0 6px rgba(0,0,0,0.9)', margin: 12, zIndex: 2 }} />
     ))}
-    {/* Крестообразные прорези на скобах */}
-    {[0, 1, 2, 3].map(i => (
-      <div key={`slot${i}`} style={{
-        position: 'absolute', left: i % 2 === 0 ? 20 : 'auto', right: i % 2 === 1 ? 20 : 'auto',
-        top: i < 2 ? 20 : 'auto', bottom: i >= 2 ? 20 : 'auto',
-        width: 2, height: 7,
-        background: 'rgba(30,18,4,0.7)',
-        zIndex: 4,
-      }} />
-    ))}
-    {/* Рамка — тёмная полоса по периметру как у ящика */}
-    <div style={{
-      position: 'absolute', inset: 0,
-      border: '6px solid rgba(30,16,4,0.55)',
-      boxShadow: 'inset 0 0 0 1px rgba(20,10,2,0.4), inset 0 0 24px rgba(20,10,2,0.2)',
-      pointerEvents: 'none', zIndex: 2,
-    }} />
-    {/* Поперечные доски-рейки ящика */}
-    {[16, 50, 84].map((pos) => (
-      <div key={`rail${pos}`} style={{
-        position: 'absolute', top: `${pos}%`, left: 0, right: 0, height: 8,
-        background: 'linear-gradient(to bottom, rgba(30,16,4,0.28), rgba(20,10,2,0.42), rgba(30,16,4,0.28))',
-        zIndex: 1,
-      }} />
-    ))}
+    <div style={{ position: 'absolute', inset: 0, border: '3px solid rgba(140,100,45,0.35)', boxShadow: 'inset 0 0 0 1px rgba(80,50,15,0.5)', pointerEvents: 'none', zIndex: 2 }} />
   </div>
 );
 
@@ -388,7 +331,7 @@ export default function Index() {
   }, [current, goTo]);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', background: '#b89a62' }}>
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', background: '#3d2810' }}>
       <WoodBg />
 
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(16px)', transition: 'opacity 0.22s ease, transform 0.22s ease' }}>
