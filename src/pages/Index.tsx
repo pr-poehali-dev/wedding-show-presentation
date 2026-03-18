@@ -9,32 +9,90 @@ const IMAGES = {
 };
 
 const T = {
-  dark: '#1a0f02',
-  mid: '#3a2208',
-  muted: 'rgba(40,22,5,0.65)',
+  dark: '#0d0a06',
+  mid: '#111008',
+  muted: 'rgba(10,8,4,0.7)',
   accent: '#C0392B',
-  gold: '#8a5c10',
+  gold: '#6b4a08',
 };
 
 const WoodBg = () => (
   <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
-    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, #e8d9be 0%, #d4c49e 18%, #dccfb0 35%, #c9b888 52%, #d8caa8 68%, #cfc09a 85%, #d4c49e 100%)' }} />
-    {[...Array(22)].map((_, i) => (
-      <div key={`h${i}`} style={{ position: 'absolute', top: `${i * 4.6}%`, left: 0, right: 0, height: `${0.8 + (i % 4) * 0.5}px`, background: `rgba(${i % 3 === 0 ? '100,75,30' : i % 3 === 1 ? '160,130,70' : '80,55,20'},${0.06 + (i % 5) * 0.025})` }} />
+    {/* Основа фанеры — жёлто-коричневый, чуть тёмнее предыдущего */}
+    <div style={{ position: 'absolute', inset: 0, background: '#b89a62' }} />
+    {/* Слои шпона с разными оттенками — имитация фанеры */}
+    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(175deg, #c8a96e 0%, #a8884e 15%, #beaa72 30%, #9e7e44 45%, #b89458 60%, #a07840 75%, #bc9e64 90%, #a88650 100%)', opacity: 0.9 }} />
+    {/* Длинные тонкие волокна — характерная текстура фанеры */}
+    {[...Array(40)].map((_, i) => (
+      <div key={`f${i}`} style={{
+        position: 'absolute', top: `${i * 2.52}%`, left: 0, right: 0,
+        height: `${0.5 + (i % 6 === 0 ? 1.2 : i % 3 === 0 ? 0.8 : 0.4)}px`,
+        background: `rgba(${i % 4 === 0 ? '50,32,8' : i % 4 === 1 ? '140,100,40' : i % 4 === 2 ? '30,18,4' : '170,130,60'},${0.08 + (i % 7) * 0.018})`,
+      }} />
     ))}
-    {[20, 47, 73].map((pos, i) => (
-      <div key={`v${i}`} style={{ position: 'absolute', left: `${pos}%`, top: 0, bottom: 0, width: 3, background: 'linear-gradient(to right, rgba(80,55,20,0.18), rgba(60,40,12,0.28), rgba(80,55,20,0.18))' }} />
+    {/* Несколько заметных тёмных прожилок */}
+    {[8, 23, 41, 58, 77, 91].map((pos, i) => (
+      <div key={`g${i}`} style={{
+        position: 'absolute', top: `${pos}%`, left: 0, right: 0,
+        height: `${1.5 + (i % 2) * 1}px`,
+        background: `rgba(40,24,6,${0.18 + (i % 3) * 0.07})`,
+      }} />
     ))}
-    {[[15, 30], [62, 55], [38, 80], [82, 20]].map(([l, t], i) => (
-      <div key={`k${i}`} style={{ position: 'absolute', left: `${l}%`, top: `${t}%`, width: 38 + i * 8, height: 22 + i * 4, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(90,60,20,0.18) 30%, transparent 70%)', transform: `rotate(${-15 + i * 12}deg)` }} />
+    {/* Вертикальные стыки листов фанеры */}
+    {[33, 66].map((pos) => (
+      <div key={`s${pos}`} style={{
+        position: 'absolute', left: `${pos}%`, top: 0, bottom: 0, width: 2,
+        background: 'linear-gradient(to right, rgba(40,24,6,0.25), rgba(25,14,3,0.4), rgba(40,24,6,0.25))',
+      }} />
     ))}
-    <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, transparent 40%, rgba(60,40,15,0.22) 100%)' }} />
+    {/* Тёмные сучки */}
+    {[[12, 22], [55, 68], [80, 40], [30, 85]].map(([l, t], i) => (
+      <div key={`k${i}`} style={{
+        position: 'absolute', left: `${l}%`, top: `${t}%`,
+        width: 50 + i * 10, height: 28 + i * 5, borderRadius: '50%',
+        background: 'radial-gradient(ellipse, rgba(35,20,5,0.28) 20%, rgba(60,38,10,0.12) 60%, transparent 80%)',
+        transform: `rotate(${-20 + i * 15}deg)`,
+      }} />
+    ))}
+    {/* Общее затемнение краёв */}
+    <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, transparent 30%, rgba(20,10,2,0.35) 100%)' }} />
+    {/* Общий тёмный оверлей для нужной глубины */}
+    <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,12,3,0.18)' }} />
+    {/* Металлические скобы по углам */}
     {[0, 1, 2, 3].map(i => (
-      <div key={`screw${i}`} style={{ position: 'absolute', left: i % 2 === 0 ? 14 : 'auto', right: i % 2 === 1 ? 14 : 'auto', top: i < 2 ? 14 : 'auto', bottom: i >= 2 ? 14 : 'auto', width: 16, height: 16, borderRadius: '50%', background: 'radial-gradient(circle at 35% 35%, #d4c8a8, #8a7040)', boxShadow: '0 1px 3px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,240,0.3)', zIndex: 2 }} />
+      <div key={`screw${i}`} style={{
+        position: 'absolute', left: i % 2 === 0 ? 12 : 'auto', right: i % 2 === 1 ? 12 : 'auto',
+        top: i < 2 ? 12 : 'auto', bottom: i >= 2 ? 12 : 'auto',
+        width: 18, height: 18, borderRadius: '50%',
+        background: 'radial-gradient(circle at 35% 35%, #c8b880, #6a5020)',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,240,180,0.25)',
+        zIndex: 3,
+      }} />
     ))}
-    <div style={{ position: 'absolute', inset: 0, border: '4px solid rgba(100,72,28,0.45)', boxShadow: 'inset 0 0 0 2px rgba(160,130,70,0.2), inset 0 0 18px rgba(80,55,20,0.12)', pointerEvents: 'none', zIndex: 2 }} />
-    {[18, 50, 82].map((pos) => (
-      <div key={`rail${pos}`} style={{ position: 'absolute', top: `${pos}%`, left: 0, right: 0, height: 6, background: 'linear-gradient(to bottom, rgba(100,72,28,0.22), rgba(80,55,20,0.32), rgba(100,72,28,0.22))', zIndex: 1 }} />
+    {/* Крестообразные прорези на скобах */}
+    {[0, 1, 2, 3].map(i => (
+      <div key={`slot${i}`} style={{
+        position: 'absolute', left: i % 2 === 0 ? 20 : 'auto', right: i % 2 === 1 ? 20 : 'auto',
+        top: i < 2 ? 20 : 'auto', bottom: i >= 2 ? 20 : 'auto',
+        width: 2, height: 7,
+        background: 'rgba(30,18,4,0.7)',
+        zIndex: 4,
+      }} />
+    ))}
+    {/* Рамка — тёмная полоса по периметру как у ящика */}
+    <div style={{
+      position: 'absolute', inset: 0,
+      border: '6px solid rgba(30,16,4,0.55)',
+      boxShadow: 'inset 0 0 0 1px rgba(20,10,2,0.4), inset 0 0 24px rgba(20,10,2,0.2)',
+      pointerEvents: 'none', zIndex: 2,
+    }} />
+    {/* Поперечные доски-рейки ящика */}
+    {[16, 50, 84].map((pos) => (
+      <div key={`rail${pos}`} style={{
+        position: 'absolute', top: `${pos}%`, left: 0, right: 0, height: 8,
+        background: 'linear-gradient(to bottom, rgba(30,16,4,0.28), rgba(20,10,2,0.42), rgba(30,16,4,0.28))',
+        zIndex: 1,
+      }} />
     ))}
   </div>
 );
@@ -46,22 +104,22 @@ const Stamp = ({ text, color = '#C0392B', rotate = -2, size = 13 }: { text: stri
 );
 
 const Code = ({ text }: { text: string }) => (
-  <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(60,38,10,0.7)', letterSpacing: '0.15em' }}>{text}</div>
+  <div style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(8,5,2,0.65)', letterSpacing: '0.18em' }}>{text}</div>
 );
 
 const ArrowUp = ({ small = false }: { small?: boolean }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.6 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.7 }}>
     {[0, 1].map(i => (
       <div key={i}>
-        <div style={{ width: 2, height: small ? 18 : 26, background: 'rgba(60,38,10,0.7)', margin: '0 auto' }} />
-        <div style={{ width: 0, height: 0, margin: '-1px auto 0', borderLeft: `${small ? 5 : 7}px solid transparent`, borderRight: `${small ? 5 : 7}px solid transparent`, borderBottom: `${small ? 9 : 13}px solid rgba(60,38,10,0.7)` }} />
+        <div style={{ width: 2, height: small ? 18 : 26, background: 'rgba(8,5,2,0.75)', margin: '0 auto' }} />
+        <div style={{ width: 0, height: 0, margin: '-1px auto 0', borderLeft: `${small ? 5 : 7}px solid transparent`, borderRight: `${small ? 5 : 7}px solid transparent`, borderBottom: `${small ? 9 : 13}px solid rgba(8,5,2,0.75)` }} />
       </div>
     ))}
   </div>
 );
 
 const Divider = () => (
-  <div style={{ height: 1, background: 'rgba(100,72,28,0.3)', margin: '14px 0' }} />
+  <div style={{ height: 1, background: 'rgba(8,5,2,0.25)', margin: '14px 0' }} />
 );
 
 const slides = [
@@ -330,7 +388,7 @@ export default function Index() {
   }, [current, goTo]);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', background: '#d4c49e' }}>
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', background: '#b89a62' }}>
       <WoodBg />
 
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(16px)', transition: 'opacity 0.22s ease, transform 0.22s ease' }}>
@@ -356,10 +414,10 @@ export default function Index() {
         ))}
       </div>
 
-      <div style={{ position: 'absolute', bottom: 20, right: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(60,38,10,0.5)', letterSpacing: '0.2em' }}>
+      <div style={{ position: 'absolute', bottom: 20, right: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 10, color: 'rgba(8,5,2,0.55)', letterSpacing: '0.2em' }}>
         {String(current + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
       </div>
-      <div style={{ position: 'absolute', bottom: 20, left: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: 'rgba(60,38,10,0.4)', letterSpacing: '0.15em' }}>
+      <div style={{ position: 'absolute', bottom: 20, left: 24, zIndex: 10, fontFamily: 'Share Tech Mono, monospace', fontSize: 9, color: 'rgba(8,5,2,0.4)', letterSpacing: '0.15em' }}>
         ← → НАВИГАЦИЯ
       </div>
     </div>
